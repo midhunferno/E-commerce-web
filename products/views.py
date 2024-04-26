@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import product
 
 # Create your views here.
 def index(request):
     return render(request,"index.html")
+
+def contact(request):
+    return render(request,"contact.html")
 
 def list_product(request):
     """__summary_
@@ -12,7 +16,12 @@ def list_product(request):
     Returns:
          _type_:_description_    
     """
-    return render(request,'product.html')
+    pro_list=product.objects.all()
+    context={
+        'product':pro_list
+        
+    }
+    return render(request,'product.html',context)
 
 def detail_product(request):
 
