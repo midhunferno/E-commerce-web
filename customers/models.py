@@ -7,8 +7,10 @@ class customer(models.Model):
     delete=0
     delete_choice=((live,'live'),(delete,'delete'))
     name=models.CharField(max_length=30)
-    address=models.FloatField()
-    user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="customer_profile")
+    email=models.EmailField()
+    address=models.TextField()
+    password=models.TextField()
+    Conform_Password=models.TextField()
     phone=models.IntegerField()
     delete_status=models.IntegerField(choices=delete_choice,default=live)
     create_at=models.DateTimeField(auto_now_add=True)

@@ -1,4 +1,7 @@
 {% load static %}
+{% block content %}
+  
+
 <div class="account-page">
     <div class="container">
         <div class="row">
@@ -12,24 +15,30 @@
                         <span onclick="register()">Register</span>
                         <hr id="Indicator" style="transform: translateX(100px);">
                     </div>
-                    <form id="LoginForm" style="transform: translateX(0px);">
-                        <input type="text" placeholder="Username">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Login</button>
+                    <form method="post" id="LoginForm" style="transform: translateX(0px);" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <button type="submit" name="login" class="btn">Login</button>
                         <a href="">Forget Password</a>
                     </form>
 
-                    <form id="RegForm" style="transform: translateX(0px);">
-                        <input type="text" placeholder="Username">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Register</button>
+                    <form method="post" id="RegForm" style="transform: translateX(0px); top: 60px!important;" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" name="name" maxlength="20" placeholder="Username">
+                        <input type="email" name="email" placeholder="Email">
+                        <input type="number" name="number"  placeholder="Phone">
+                        <input type="text" name="address" placeholder="Address">
+                        <input type="password" name="password" maxlength="10" minlength="3" placeholder="Password">
+                        <input type="password" name="cnf_pwd" maxlength="10" minlength="3" placeholder="Conform Password">
+                        <button type="submit" name="register" class="btn">Register</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock content %}
 <!-- <script>
     var MenuItems = document.getElementById("MenuItems");
     MenuItems.style.maxHeight = "0px";
