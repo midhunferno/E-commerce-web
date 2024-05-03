@@ -24,7 +24,7 @@
     <div class="row">
         {% for product in featuerd_pro %}
         <div class="col-4">
-            <a href="product_details.html"><img src="{% static  'images/product-1.jpg'  %}"></a>
+            <a href="{% url 'pro_detail' product.id %}"><img src="{% static  'images/product-1.jpg'  %}"></a>
             <h4>{{product.title}}</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>

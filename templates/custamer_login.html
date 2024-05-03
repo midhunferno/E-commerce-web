@@ -1,6 +1,6 @@
 {% load static %}
 {% block content %}
-  
+
 
 <div class="account-page">
     <div class="container">
@@ -9,28 +9,40 @@
                 <img src="{% static  'images/image1.png' %}" width="100%">
             </div>
             <div class="col-2">
+                <div class="form-container" style="height: auto;">
+                    {% if err %}
+                    <p style="color: red;"><b>{{err1}} {{err}}</b></p>
+                    {% endif %}
+                </div>
+
                 <div class="form-container">
+
                     <div class="form-btn">
                         <span onclick="login()">Login</span>
                         <span onclick="register()">Register</span>
                         <hr id="Indicator" style="transform: translateX(100px);">
                     </div>
-                    <form method="post" id="LoginForm" style="transform: translateX(0px);" enctype="multipart/form-data">
+                    <form method="post" id="LoginForm" style="transform: translateX(0px);"
+                        enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="text" name="name" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
+
+                        <input type="text" required name="username" placeholder="Username">
+                        <input type="password" required name="password" placeholder="Password">
                         <button type="submit" name="login" class="btn">Login</button>
                         <a href="">Forget Password</a>
                     </form>
 
-                    <form method="post" id="RegForm" style="transform: translateX(0px); top: 60px!important;" enctype="multipart/form-data">
+                    <form method="post" id="RegForm" style="transform: translateX(0px); top: 60px!important;"
+                        enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="text" name="name" maxlength="20" placeholder="Username">
-                        <input type="email" name="email" placeholder="Email">
-                        <input type="number" name="number"  placeholder="Phone">
-                        <input type="text" name="address" placeholder="Address">
-                        <input type="password" name="password" maxlength="10" minlength="3" placeholder="Password">
-                        <input type="password" name="cnf_pwd" maxlength="10" minlength="3" placeholder="Conform Password">
+
+                        <input type="text" required name="username" maxlength="20" placeholder="Username">
+                        <input type="email" required name="email" placeholder="Email">
+                        <input type="number" required name="number" placeholder="Phone">
+                        <input type="text" required name="address" placeholder="Address">
+                        <input type="password" required name="password" maxlength="10" minlength="3"
+                            placeholder="Password">
+                        <!-- <input type="password" name="cnf_pwd" maxlength="10" minlength="3" placeholder="Conform Password"> -->
                         <button type="submit" name="register" class="btn">Register</button>
                     </form>
                 </div>
@@ -38,6 +50,7 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}
 <!-- <script>
     var MenuItems = document.getElementById("MenuItems");
@@ -70,3 +83,12 @@
 
     }
 </script>
+{% if register %}
+<script>
+    register()
+</script>
+{% else %}
+<script>
+    login()
+</script>
+{% endif %}
