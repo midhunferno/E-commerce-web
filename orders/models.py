@@ -26,5 +26,5 @@ class cart(models.Model):
 class cartitem(models.Model):
         product=models.ForeignKey(product,on_delete=models.SET_NULL,related_name="add_cart",null=True)
         quantity=models.IntegerField(default=1)
-        owner=models.ForeignKey(cart,on_delete=models.CASCADE,related_name="added_item")
+        owner=models.ForeignKey(cart,on_delete=models.CASCADE,related_name="added_item",null=True)
    
