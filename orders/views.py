@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from .models import cart,cartitem
 from products.models import product
 from django.contrib import messages
 # Create your views here.
+@login_required(login_url='account')
 def show_cart(request):
     user=request.user
     customer=user.customer_profile
@@ -12,7 +14,7 @@ def show_cart(request):
     )
     context={'cart':cart_obj}    
     return render(request,'cart.html',context)
-
+@login_required(login_url='account')
 def addto_cart(request):
     if request.POST:
         user=request.user
@@ -64,5 +66,14 @@ def checkout(request):
         except Exception as e:
            stat_msg="Unable to process the order. An error occurred during delivery."
            messages.error(request,stat_msg)
-    return redirect('cart')             
-            
+    return redirect('cart')
+   
+@login_required(login_url='account')          
+def view_order(request):
+    user=request.user
+    customer=user.customer_profile
+    all_order=cart.objects.filter(owner=customer).exclude(order_status=cart.cart_stage)   
+    context={
+       'order':all_order
+    }
+    return render(request,'order.html',context)           

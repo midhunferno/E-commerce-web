@@ -9,9 +9,9 @@ class cart(models.Model):
     delete_choice=((live,'live'),(delete,'delete'))
     cart_stage=0
     order_confform=1
-    order_prossed=1
-    order_deliverd=4
-    order_rejected=1
+    order_prossed=2
+    order_deliverd=3
+    order_rejected=4
     static_choice=(
                    (order_prossed,'order_prossed'),
                    (order_deliverd,'order_deliverd'),
