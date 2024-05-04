@@ -1,7 +1,13 @@
 {% extends 'blank_laout.html' %}
 
 {% block content %}
-
-{% include 'cart_cod.html' %}
-
+  {% if messages %}
+    <ul class="messages" >
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    {% include 'cart_cod.html' %}
+  {% endif %}
 {% endblock content %}

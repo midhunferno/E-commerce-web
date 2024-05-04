@@ -29,7 +29,8 @@ def custamer_reg(request):
             address=address
         )
         costomer.save()
-        return redirect('index')
+        return redirect('account')
+    
     if request.POST and 'login' in request.POST:
          context['register']=False
          username=request.POST.get('username')
@@ -42,6 +43,7 @@ def custamer_reg(request):
             err1="invalid user !"
             return render(request,'account.html',{'err':err1})
     return render(request,'account.html',context)
+
 def userlogout(request):
    logout(request)
    return redirect('account')
