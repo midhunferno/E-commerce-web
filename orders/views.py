@@ -68,7 +68,7 @@ def checkout(request):
            messages.error(request,stat_msg)
     return redirect('cart')
    
-@login_required(login_url='account')          
+      
 def view_order(request):
     user=request.user
     customer=user.customer_profile

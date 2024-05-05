@@ -2,7 +2,7 @@
 <div class="small-container single-product">
     <div class="row">
         <div class="col-2">
-            <img src="{% static  'images/gallery-1.jpg'  %}" width="100%" id="ProductImg">
+            <img src="{{ product.image.url }}" width="100%" id="ProductImg">
 
             <div class="small-img-row">
                 <div class="small-img-col">
@@ -21,8 +21,8 @@
 
         </div>
         <div class="col-2">
-            <p>{{product.title}}</p>
-            <h1>Red Printed T-Shirt by HRX</h1>
+            <h4>{{product.title}}</h4>
+            <h3>{{product.describtion}}</h3>
             <h4>${{product.price}}</h4>
             <select>
                 <option>Select Size</option>

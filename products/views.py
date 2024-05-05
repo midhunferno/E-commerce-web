@@ -28,7 +28,7 @@ def list_product(request):
     if request.GET:
         page=request.GET.get('page',1)
     pro_list=product.objects.order_by('prioraty')
-    pro_page=Paginator(pro_list,4)
+    pro_page=Paginator(pro_list,8)
     pro_list=pro_page.get_page(page)
     context={
         'product':pro_list

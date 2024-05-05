@@ -499,3 +499,7 @@ form a{
         display: none;
     }
 }
+h3.err {
+    color: green;
+    text-align: center;
+}
